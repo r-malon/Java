@@ -9,6 +9,14 @@ public class Pessoa {
 		this.imposto = imposto;
 	}
 
+	public double getDesconto() {
+		return desconto;
+	}
+
+	public double getImposto() {
+		return imposto;
+	}
+
 	private static boolean valorValido(double valor) {
 		return valor > 0.0;
 	}

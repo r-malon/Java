@@ -12,7 +12,7 @@ public class Pessoa {
 	}
 
 	public boolean deMaior() {
-		return idade >= (2021 - dataNascimento);
+		return (2021 - dataNascimento) >= 18;
 	}
 
 	public void depositar(double valor) {

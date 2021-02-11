@@ -1,24 +1,24 @@
 import java.util.Scanner;
 
 public class Auxilio {
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		int usuarios = 0;
-		int beneficiarios = 0;
-		int total = 0;
-		boolean executar = true;
+	static Scanner input = new Scanner(System.in);
+	static int usuarios = 0;
+	static int beneficiarios = 0;
+	static int total = 0;
+	static boolean executar = true;
 
+	public static void main(String[] args) {
 		String nome;
 		int dataNascimento;
 		String estado;
 
 		while (executar) {
 			System.out.print("Nome: ");
-			String nome = input.nextLine();
+			nome = input.nextLine();
 			System.out.print("Data de Nascimento: ");
-			int dataNascimento = input.nextInt();
+			dataNascimento = input.nextInt();
 			System.out.print("Estado: ");
-			String estado = input.nextLine();
+			estado = input.nextLine();
 
 			informarNovo();
 		}
