@@ -4,8 +4,8 @@ public interface GenericArray<T> {
 	public T remove(int pos);
 	public boolean removeFirst(T element);
 	public void clear();
-//	public T get(int pos);
-//	public T set(int pos, T element);
+	public T get(int pos);
+	public T set(int pos, T element);
 	public int size();
 	public int indexOf(T element);
 	public int lastIndexOf(T element);

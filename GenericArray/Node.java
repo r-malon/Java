@@ -7,12 +7,23 @@ public class Node<T> {
 	}
 
 	public Node(T data, Node next) {
-		
+		this.data = data;
+		this.next = next;
 	}
 
-	public T getData()
-	public void setData(T element)
+	public T getData() {
+		return data;
+	}
 
-	public Node getNext()
-	public void setNext(Node node)
+	public void setData(T element) {
+		data = element;
+	}
+
+	public Node getNext() {
+		return next;
+	}
+
+	public void setNext(Node node) {
+		next = node;
+	}
 }

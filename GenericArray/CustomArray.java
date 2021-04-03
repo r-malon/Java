@@ -3,6 +3,7 @@ public class CustomArray<T> implements GenericArray<T> {
 	private int 	initialCapacity;
 	private int 	counter;
 	private boolean resizeable;
+	private static int resizeSize = 5;
 
 	public CustomArray() {
 		this(10);
@@ -14,9 +15,9 @@ public class CustomArray<T> implements GenericArray<T> {
 
 	public CustomArray(int initialCapacity, boolean resizeable) {
 		this.initialCapacity = initialCapacity;
-		this.resizeable = resizeable;
-		this.array = (T[]) new Object[initialCapacity];
-		this.counter = 0;
+		this.resizeable		 = resizeable;
+		this.array			 = (T[]) new Object[initialCapacity];
+		this.counter		 = 0;
 	}
 
 	public void add(T element) {
@@ -27,34 +28,53 @@ public class CustomArray<T> implements GenericArray<T> {
 	}
 
 	public void add(int pos, T element) {
+		T[] temp = (T[]) new Object[array.length + 1];
 
+		for (int i = 0; i < array.length + 1; i++) {
+			if (i < pos)
+				temp[i] = array[i];
+			else if (i == pos)
+				temp[i] = element;
+			else
+				temp[i] = array[i - 1];
+		}
+		array = temp;
 	}
 
 	private void resize() {
-		T[] temp = (T[]) new Object[array.length];
+		T[] temp = (T[]) new Object[array.length + resizeSize];
 
 		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null) temp[i] = array[i]; // TODO
+			if (array[i] != null) temp[i] = array[i];
 		}
 		array = temp;
 	}
 
 	public T remove(int pos) {
 		T[] temp = (T[]) new Object[array.length - 1];
+		T removed = null;
 
-		for (int i = 0, j = 0; i < array.length; i++, j++) {
-			if (i == pos) continue;
-			if (array[i] != null) temp[j] = array[i]; // TODO
+		for (int i = 0, j = 0; i < array.length; i++) {
+			if (i == pos) {
+				removed = array[i];
+				continue;
+			} else if (array[i] != null) {
+				temp[j] = array[i];
+				j++;
+			}
 		}
 		array = temp;
+		return removed;
 	}
 
 	public boolean removeFirst(T element) {
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == element) {
+				remove(i);
+				return true;
+			}
+		}
 		return false;
-	}
-
-	public T[] toArray() {
-		return array;
 	}
 
 	public int indexOf(T element) {
@@ -78,9 +98,20 @@ public class CustomArray<T> implements GenericArray<T> {
 		return false;
 	}
 
+	public T get(int index) {
+		return array[index];
+	}
+
+	public T set(int index, T element) {
+		T old = array[index];
+		array[index] = element;
+
+		return old;
+	}
+
 	public void clear() {
-		counter = 0;
-		array = (T[]) new Object[initialCapacity];
+		counter	 = 0;
+		array	 = (T[]) new Object[initialCapacity];
 	}
 
 	public int size() {
@@ -92,6 +123,10 @@ public class CustomArray<T> implements GenericArray<T> {
 	}
 
 	public boolean isFull() {
-		if (!resizeable) return size() == counter;
+		return size() == counter;
+	}
+
+	public T[] toArray() {
+		return array;
 	}
 }
