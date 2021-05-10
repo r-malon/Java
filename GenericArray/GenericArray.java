@@ -1,15 +1,15 @@
 public interface GenericArray<T> {
-	public void add(T element);
-	public void add(int pos, T element);
-	public T remove(int pos);
-	public boolean removeFirst(T element);
-	public void clear();
-	public T get(int pos);
-	public T set(int pos, T element);
-	public int size();
-	public int indexOf(T element);
-	public int lastIndexOf(T element);
-	public boolean isEmpty();
-	public boolean contains(T element);
-	public T[] toArray();
+	void add(T element);
+	void add(int pos, T element);
+	T remove(int pos);
+	boolean removeFirst(T element);
+	void clear();
+	T get(int pos);
+	T set(int pos, T element);
+	int size();
+	int indexOf(T element);
+	int lastIndexOf(T element);
+	boolean isEmpty();
+	boolean contains(T element);
+	T[] toArray();
 }
