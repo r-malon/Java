@@ -5,10 +5,10 @@ public class ArrayQueue<T> implements GenericQueue<T> {
 	private final int size;
 
 	public ArrayQueue(int size) {
-		this.size 	  = size;
-		this.start 	  = 0;
+		this.size     = size;
+		this.start    = 0;
 		this.cur_size = 0;
-		this.array 	  = (T[]) new Object[size];
+		this.array    = (T[]) new Object[size];
 	}
 
 	public void add(T element) throws Exception {
