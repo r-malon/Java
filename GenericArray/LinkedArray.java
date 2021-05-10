@@ -4,15 +4,15 @@ public class LinkedArray<T> implements GenericArray<T> {
 	private int 	counter;
 
 	public LinkedArray() {
-		this.first 		= null;
-		this.last 		= null;
-		this.counter 	= 0;
+		this.first   = null;
+		this.last    = null;
+		this.counter = 0;
 	}
 
 	public void clear() {
-		this.first 		= null;
-		this.last 		= null;
-		this.counter 	= 0;
+		this.first   = null;
+		this.last    = null;
+		this.counter = 0;
 	}
 
 	public void add(T element) {
