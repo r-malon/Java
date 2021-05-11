@@ -11,6 +11,13 @@ public class LinkedQueue<T> implements GenericQueue<T> {
 
 	public void add(T element) throws Exception {
 		Node node = new Node(element, null);
+		if (start == null) {
+			start = node;
+			end = start;
+		} else {
+			end.setNext(node);
+			end = node;
+		}
 	}
 
 	public void clear() {

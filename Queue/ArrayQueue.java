@@ -35,7 +35,7 @@ public class ArrayQueue<T> implements GenericQueue<T> {
 	}
 
 	public void clear() {
-		start 	 = 0;
+		start	 = 0;
 		cur_size = 0;
 		array	 = (T[]) new Object[size];
 	}
