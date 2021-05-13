@@ -6,4 +6,12 @@ public class LinkedStack<T> implements GenericStack<T> {
 	public LinkedStack() {
 		this.top = null;
 	}
+
+	public void clear() {
+		top = null;
+	}
+
+	public boolean isEmpty() {
+		return top == null;
+	}
 }
