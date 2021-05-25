@@ -1,5 +1,5 @@
 public class ArrayQueue<T> implements GenericQueue<T> {
-	private T 	array[];
+	private T   array[];
 	private int start;
 	private int cur_size;
 	private final int size;
@@ -12,25 +12,24 @@ public class ArrayQueue<T> implements GenericQueue<T> {
 	}
 
 	public void add(T element) throws Exception {
+		if (array.length == size)
+			throw new ArrayIndexOutOfBoundsException("Full queue");
+		if (start < 0)
+			start = 0;
 		int pos = (start + cur_size) % size;
 		array[pos] = element;
 		cur_size++;
 	}
 
 	public T remove() throws Exception {
-		T[] temp = (T[]) new Object[array.length - 1];
-		T removed = null;
-
-		for (int i = 0, j = 0; i < array.length; i++) {
-			if (i == start) {
-				removed = array[i];
-				continue;
-			} else if (array[i] != null) {
-				temp[j] = array[i];
-				j++;
-			}
-		}
-		array = temp;
+		if (isEmpty())
+			throw new ArrayIndexOutOfBoundsException("Empty queue");
+		T removed = (T) array[start];
+		if (start < size - 1)
+			start++;
+		else
+			start = 0;
+		cur_size--;
 		return removed;
 	}
 

@@ -20,12 +20,18 @@ public class LinkedQueue<T> implements GenericQueue<T> {
 		}
 	}
 
+	public T remove() throws Exception {
+		if (isEmpty())
+			throw new ArrayIndexOutOfBoundsException("Empty queue");
+		return removed;
+	}
+
 	public void clear() {
 		this.start = null;
 		this.end   = null;
 	}
 
 	public boolean isEmpty() {
-		return counter == 0;
+		return start == null && end == null;
 	}
 }
