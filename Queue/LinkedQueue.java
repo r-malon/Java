@@ -23,6 +23,8 @@ public class LinkedQueue<T> implements GenericQueue<T> {
 	public T remove() throws Exception {
 		if (isEmpty())
 			throw new ArrayIndexOutOfBoundsException("Empty queue");
+		T removed = start.getData();
+		start = start.getNext();
 		return removed;
 	}
 
