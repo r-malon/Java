@@ -1,5 +1,5 @@
 public class ArrayStack<T> implements GenericStack<T> {
-	private T   array[];
+	private T[] array;
 	private int cur_size;
 	private final int size;
 
