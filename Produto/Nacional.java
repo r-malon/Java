@@ -22,15 +22,10 @@ public class Nacional extends Produto {
 
 	@Override
 	public boolean equals(Object outro) {
-		if (outro == null) {
+		if (outro == null || outro.getClass() != this.getClass())
 			return false;
-		}
-		if (this == outro) {
+		if (outro == this)
 			return true;
-		}
-		if (this.getClass() != outro.getClass()) {
-			return false;
-		}
 
 		Nacional p = (Nacional) outro;
 		return Objects.equals(this.getCodigo(), p.getCodigo()) && Objects.equals(this.getDescricao(), p.getDescricao()) && Objects.equals(this.getPrecoCusto(), p.getPrecoCusto()) && Objects.equals(this.getCategoria(), p.getCategoria());

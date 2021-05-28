@@ -21,9 +21,8 @@ public class Biblioteca {
 		ArrayList<Livro> livros = new ArrayList<>();
 
 		for (Livro livro : acervo) {
-			if (livro.getGenero() == genero) {
+			if (livro.getGenero() == genero)
 				livros.add(livro);
-			}
 		}
 		return livros;
 	}
@@ -32,9 +31,8 @@ public class Biblioteca {
 		int quantidade = 0;
 
 		for (Livro livro : acervo) {
-			if (nome.equalsIgnoreCase(livro.getAutor().getNome()) && sobrenome.equalsIgnoreCase(livro.getAutor().getSobrenome())) {
+			if (nome.equalsIgnoreCase(livro.getAutor().getNome()) && sobrenome.equalsIgnoreCase(livro.getAutor().getSobrenome()))
 				quantidade++;
-			}
 		}
 		return quantidade;
 	}

@@ -33,15 +33,10 @@ public class Televisor extends Aparelho {
 
 	@Override
 	public boolean equals(Object outro) {
-		if (outro == null) {
+		if (outro == null || outro.getClass() != this.getClass())
 			return false;
-		}
-		if (this == outro) {
+		if (outro == this)
 			return true;
-		}
-		if (this.getClass() != outro.getClass()) {
-			return false;
-		}
 
 		Televisor p = (Televisor) outro;
 		return Objects.equals(this.getMarca(), p.getMarca()) && Objects.equals(this.getModelo(), p.getModelo()) && this.polegadas == p.polegadas;

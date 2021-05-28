@@ -21,9 +21,8 @@ public class Usuario {
 			this.senha = senhaNova;
 			senhasUtilizadas.add(0, senhaNova);
 
-			if (senhasUtilizadas.size() > 5) {
+			if (senhasUtilizadas.size() > 5)
 				senhasUtilizadas.remove(5);
-			}
 			return true;
 		}
 		return false;
@@ -31,9 +30,8 @@ public class Usuario {
 
 	public boolean senhaValida(String senha) {
 		if (senha != null && !senha.isEmpty()) {
-			if (senhasUtilizadas.contains(senha)) {
+			if (senhasUtilizadas.contains(senha))
 				return false;
-			}
 			return true;
 		}
 		return false;

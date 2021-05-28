@@ -13,9 +13,11 @@ public class Disc {
 		this.size = size;
 	}
 
-	public boolean smallerThan(Object obj) {
-		if (obj == null || obj == this)
+	public boolean smallerThan(Disc obj) {
+		if (obj == this)
 			return false;
-		return ((Disc) obj).getSize() > this.getSize();
+		if (obj == null)
+			return true;
+		return obj.getSize() > this.getSize();
 	}
 }

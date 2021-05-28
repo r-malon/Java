@@ -39,4 +39,8 @@ public class ArrayStack<T> implements GenericStack<T> {
 	public boolean isEmpty() {
 		return array.length == 0;
 	}
+
+	public int getSize() {
+		return cur_size;
+	}
 }
