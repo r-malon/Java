@@ -24,10 +24,15 @@ public class LinkedTower {
 	}
 
 	public boolean move(int src, int dest) throws Exception {
-		Disc disc = (Disc) rods.get(src).pop();
-		Disc top = (Disc) rods.get(dest).top();
-		if (disc.smallerThan(top)) {
-			rods.get(dest).push(disc);
+		if (gameFinished())
+			return false;
+		Disc src_top = (Disc) rods.get(src).top();
+		Disc dest_top = (Disc) rods.get(dest).top();
+		System.out.println(src_top.smallerThan(dest_top));
+		if (src_top.smallerThan(dest_top)) {
+			System.out.println("cur_size");
+			src_top = (Disc) rods.get(src).pop();
+			rods.get(dest).push(src_top);
 			return true;
 		}
 		return false;
@@ -44,11 +49,12 @@ public class LinkedTower {
 	public String toString() {
 		ArrayList<String> result = new ArrayList<String>();
 		int cur_size;
-		for (int i=0; i<rods.size()-1; i++) {
+		for (int i=0; i<rods.size(); i++) {
 			cur_size = rods.get(i).getSize();
-			result.add(String.format("%s%s", " ".repeat(cur_size*2), "==".repeat(cur_size)));
+			System.out.println(cur_size);
+			for (int j=0; j<cur_size; j++) 
+				result.add(String.format("%s%s", " ".repeat(cur_size-j), "==".repeat(j+1)));
 		}
-		System.out.print("\033[H\033[J");
 //		return String.format("\033[%d;%dH", stackSize-1, (stackSize+1));
 		return String.join("\n", result);
 	}

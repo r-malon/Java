@@ -4,6 +4,8 @@ public class Main {
 	static Scanner input = new Scanner(System.in);
 	static int from;
 	static int to;
+	static int n_rods;
+	static int stackSize;
 
 	public static void main(String[] args) throws Exception {
 		String arg = "";
@@ -14,25 +16,23 @@ public class Main {
 			System.exit(0);
 		}
 //		String arg = (args.length > 0) ? args[0] : "";
-		int m=3, n=5;
-		LinkedTower tower = new LinkedTower(m, n);
+		init();
+		LinkedTower tower = new LinkedTower(n_rods, stackSize);
+		System.out.println(tower);
 
 		switch (arg) {
-//		case "contigua": ArrayTower tower = new ArrayTower(m, n); break;
-		case "dinamica": tower = new LinkedTower(m, n); break;
+//		case "contigua": ArrayTower tower = new ArrayTower(n_rods, stackSize); break;
+		case "dinamica": tower = new LinkedTower(n_rods, stackSize); break;
 		case "about": // FALLTHROUGH
 		case "sobre":
 		default:
 			help();
 			System.exit(0);
 		}
-/*		System.out.print("Quantas pilhas? ");
-		m = input.nextInt();
-		System.out.print("Tamanho de cada pilha: ");
-		n = input.nextInt();*/
 		do {
 			makeMove();
 			tower.move(from, to);
+			clearScreen();
 			System.out.println(tower);
 		} while (!tower.gameFinished());
 	}
@@ -44,11 +44,26 @@ public class Main {
 		to = input.nextInt();
 	}
 
+	public static void init() {
+		System.out.print("Quantas pilhas? ");
+		n_rods = input.nextInt();
+		System.out.print("Tamanho de cada pilha: ");
+		stackSize = input.nextInt();
+	}
+
+	public static void clearScreen() {
+		System.out.print("\033[H\033[J");
+	}
+
 	public static void help() {
+		// Java 15 Text Blocks
 		System.out.println("""
 		Usage: java -jar TorresDeHanoi.jar [OPTION]
 
 		When no option is passed, this help file is shown.
+		If output is garbled text on Windows, run this command as admin to 
+		enable ANSI escape codes:
+		  REG ADD HKCU\\CONSOLE /f /v VirtualTerminalLevel /t REG_DWORD /d 1
 
 		Options:
 		  contigua	

@@ -97,9 +97,8 @@ public class LinkedArray<T> implements GenericArray<T> {
 		Node curr = first;
 
 		for (int i = 0; i < counter; i++) {
-			if (i == pos) {
+			if (i == pos)
 				return (T) curr.getData();
-			}
 			curr = curr.getNext();
 		}
 		return null;
@@ -124,9 +123,8 @@ public class LinkedArray<T> implements GenericArray<T> {
 		Node curr = first;
 
 		for (int i = 0; i < counter; i++) {
-			if ((T) curr.getData() == element) {
+			if ((T) curr.getData() == element)
 				return i;
-			}
 			curr = curr.getNext();
 		}
 		return -1;
@@ -137,9 +135,8 @@ public class LinkedArray<T> implements GenericArray<T> {
 		int index = -1;
 
 		for (int i = 0; i < counter; i++) {
-			if ((T) curr.getData() == element) {
+			if ((T) curr.getData() == element)
 				index = i;
-			}
 			curr = curr.getNext();
 		}
 		return index;
@@ -149,7 +146,8 @@ public class LinkedArray<T> implements GenericArray<T> {
 		Node curr = first;
 
 		for (int i = 0; i < counter; i++) {
-			if ((T) curr.getData() == element) return true;
+			if ((T) curr.getData() == element)
+				return true;
 			curr = curr.getNext();
 		}
 		return false;
@@ -166,7 +164,8 @@ public class LinkedArray<T> implements GenericArray<T> {
 	public T[] toArray() {
 		T[] array = (T[]) new Object[counter];
 
-		if (first == null) return array;
+		if (first == null)
+			return array;
 
 		Node curr = first;
 

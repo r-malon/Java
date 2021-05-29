@@ -110,8 +110,8 @@ public class CustomArray<T> implements GenericArray<T> {
 	}
 
 	public void clear() {
-		counter	 = 0;
-		array	 = (T[]) new Object[initialCapacity];
+		counter = 0;
+		array   = (T[]) new Object[initialCapacity];
 	}
 
 	public int size() {

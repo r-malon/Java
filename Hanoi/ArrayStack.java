@@ -31,6 +31,10 @@ public class ArrayStack<T> implements GenericStack<T> {
 		return array[cur_size - 1];
 	}
 
+	public T get(int pos) throws Exception {
+		return array[pos];
+	}
+
 	public void clear() {
 		cur_size = 0;
 		array    = (T[]) new Object[size];
