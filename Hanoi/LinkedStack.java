@@ -33,7 +33,7 @@ public class LinkedStack<T> implements GenericStack<T> {
 		return (T) top.getData();
 	}
 
-	public T get(int pos) throws Exception {
+	public T get(int pos) {
 		Node curr = top;
 
 		for (int i = 0; i < cur_size; i++) {

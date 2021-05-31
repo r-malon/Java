@@ -6,6 +6,7 @@ public class Main {
 	static int to;
 	static int n_rods;
 	static int stackSize;
+	static boolean moved;
 
 	public static void main(String[] args) throws Exception {
 		String arg = "";
@@ -31,7 +32,7 @@ public class Main {
 		}
 		do {
 			makeMove();
-			tower.move(from, to);
+			moved = tower.move(from, to);
 			clearScreen();
 			System.out.println(tower);
 		} while (!tower.gameFinished());
@@ -53,6 +54,8 @@ public class Main {
 
 	public static void clearScreen() {
 		System.out.print("\033[H\033[J");
+		if (!moved)
+			System.out.println("\033[31mInvalid move\n\033[0m");
 	}
 
 	public static void help() {
