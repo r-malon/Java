@@ -22,7 +22,7 @@ public class Main {
 		System.out.println(tower);
 
 		switch (arg) {
-//		case "contigua": ArrayTower tower = new ArrayTower(n_rods, stackSize); break;
+		case "contigua": // ArrayTower tower = new ArrayTower(n_rods, stackSize); break;
 		case "dinamica": tower = new LinkedTower(n_rods, stackSize); break;
 		case "about": // FALLTHROUGH
 		case "sobre":
@@ -36,6 +36,9 @@ public class Main {
 			clearScreen();
 			System.out.println(tower);
 		} while (!tower.gameFinished());
+
+		if (tower.gameFinished())
+			System.out.print("\033[1;32mVICTORY\033[0m");
 	}
 
 	public static void makeMove() {
@@ -43,19 +46,31 @@ public class Main {
 		from = input.nextInt();
 		System.out.print("Move to: ");
 		to = input.nextInt();
+		validMove();
+	}
+
+	public static void validMove() {
+		if (from < 0 || to < 0 || from >= stackSize || to >= stackSize) {
+			System.out.println("\033[1;31mInvalid move\n\033[0m");
+			makeMove();
+		}
 	}
 
 	public static void init() {
-		System.out.print("Quantas pilhas? ");
+		System.out.print("Number of rods: ");
 		n_rods = input.nextInt();
-		System.out.print("Tamanho de cada pilha: ");
+		System.out.print("Number of discs: ");
 		stackSize = input.nextInt();
+		if (n_rods <= 0 || stackSize <= 0) {
+			System.out.println("\033[1;31mInvalid values\n\033[0m");
+			init();
+		}
 	}
 
 	public static void clearScreen() {
 		System.out.print("\033[H\033[J");
 		if (!moved)
-			System.out.println("\033[31mInvalid move\n\033[0m");
+			System.out.println("\033[1;31mInvalid move\n\033[0m");
 	}
 
 	public static void help() {
@@ -63,18 +78,19 @@ public class Main {
 		System.out.println("""
 		Usage: java -jar TorresDeHanoi.jar [OPTION]
 
+		\033[1;36mCreated by: Rafael Davino Malon, Gabriel Ratke, Gabriel Dalfovo\033[0m
+
 		When no option is passed, this help file is shown.
 		If output is garbled text on Windows, run this command as admin to 
 		enable ANSI escape codes:
 		  REG ADD HKCU\\CONSOLE /f /v VirtualTerminalLevel /t REG_DWORD /d 1
 
 		Options:
-		  contigua	
-		  dinamica	
-		  sobre	
+		  contigua	Starts game using linked list implementation
+		  dinamica	Starts game using array implementation
+		  sobre		Prints this help file
 
 		For bug reporting instructions, please see:
-		<https://github.com/r-malon/Java/issues>.
-		""");
+		<https://github.com/r-malon/Java/issues>.""");
 	}
 }

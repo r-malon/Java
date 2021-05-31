@@ -7,7 +7,7 @@ public <T> void genericMethod() {
 */
 import java.util.ArrayList;
 
-public class LinkedTower extends Game {
+public class LinkedTower {
 	private ArrayList<LinkedStack> rods;
 	private int stackSize;
 
@@ -21,7 +21,6 @@ public class LinkedTower extends Game {
 			rods.get(0).push(new Disc(i));
 	}
 
-	@Override
 	public boolean move(int src, int dest) throws Exception {
 		if (gameFinished())
 			return false;
@@ -37,7 +36,6 @@ public class LinkedTower extends Game {
 		return false;
 	}
 
-	@Override
 	public boolean gameFinished() {
 		for (int i=0; i<rods.size()-1; i++)
 			if (!rods.get(i).isEmpty())
@@ -45,7 +43,6 @@ public class LinkedTower extends Game {
 		return true;
 	}
 
-	@Override
 	public int getSize() {
 		return rods.size();
 	}
