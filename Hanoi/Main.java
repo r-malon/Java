@@ -25,11 +25,11 @@ public class Main {
 		case "contigua": // ArrayTower tower = new ArrayTower(n_rods, stackSize); break;
 		case "dinamica": tower = new LinkedTower(n_rods, stackSize); break;
 		case "about": // FALLTHROUGH
-		case "sobre":
 		default:
 			help();
 			System.exit(0);
 		}
+
 		do {
 			makeMove();
 			moved = tower.move(from, to);
@@ -78,8 +78,6 @@ public class Main {
 		System.out.println("""
 		Usage: java -jar TorresDeHanoi.jar [OPTION]
 
-		\033[1;36mCreated by: Rafael Davino Malon, Gabriel Ratke, Gabriel Dalfovo\033[0m
-
 		When no option is passed, this help file is shown.
 		If output is garbled text on Windows, run this command as admin to 
 		enable ANSI escape codes:
@@ -88,7 +86,7 @@ public class Main {
 		Options:
 		  contigua	Starts game using linked list implementation
 		  dinamica	Starts game using array implementation
-		  sobre		Prints this help file
+		  about 	Prints this help file
 
 		For bug reporting instructions, please see:
 		<https://github.com/r-malon/Java/issues>.""");
