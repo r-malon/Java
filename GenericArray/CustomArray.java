@@ -24,7 +24,8 @@ public class CustomArray<T> implements GenericArray<T> {
 		array[counter] = element;
 		counter++;
 
-		if (resizeable && counter == array.length) resize();
+		if (resizeable && counter == array.length)
+			resize();
 	}
 
 	public void add(int pos, T element) {
@@ -45,7 +46,8 @@ public class CustomArray<T> implements GenericArray<T> {
 		T[] temp = (T[]) new Object[array.length + resizeSize];
 
 		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null) temp[i] = array[i];
+			if (array[i] != null)
+				temp[i] = array[i];
 		}
 		array = temp;
 	}
