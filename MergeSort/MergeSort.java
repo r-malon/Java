@@ -1,6 +1,6 @@
 public class MergeSort {
 	public static void main(String[] args) {
-		Integer[] numeros = { 3, 9, 8, 7, 6, 2, 1 };
+		int[] numeros = { 3, 9, 8, 7, 6, 2, 1 };
 
 		sort(numeros);
 
@@ -9,11 +9,11 @@ public class MergeSort {
 		}
 	}
 
-	public static <T> T[] sort(T[] array) {
+	public static int[] sort(int[] array) {
 		if (array.length <= 1)
 			return array;
-		T[] left = (T[]) new Object[array.length/2];
-		T[] right = (T[]) new Object[array.length/2];
+		int[] left = new int[array.length/2];
+		int[] right = new int[array.length/2];
 
 		for (int i=0; i<array.length; i++) {
 			if (i < array.length/2)
@@ -26,8 +26,8 @@ public class MergeSort {
 		return merge(left, right);
 	}
 
-	public static <T> T[] merge(T[] left, T[] right) {
-		T[] merged = (T[]) new Object[left.length];
+	public static int[] merge(int[] left, int[] right) {
+		int[] merged = new int[left.length];
 		int index  = 0;
 
 		while (left.length > 0 && right.length > 0) {
@@ -43,9 +43,9 @@ public class MergeSort {
 		return merged;
 	}
 
-	public static <T> T remove(T[] array, int pos) {
-		T[] temp = (T[]) new Object[array.length - 1];
-		T removed = null;
+	public static int remove(int[] array, int pos) {
+		int[] temp = new int[array.length - 1];
+		int removed = null;
 
 		for (int i = 0, j = 0; i < array.length; i++) {
 			if (i == pos) {
