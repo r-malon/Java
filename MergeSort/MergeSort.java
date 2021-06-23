@@ -1,62 +1,50 @@
 public class MergeSort {
 	public static void main(String[] args) {
-		int[] numeros = { 3, 9, 8, 7, 6, 2, 1 };
+		int[] numbers = { 6, 3, 9, 9, 7, 6, 5, 2, 1, 11, 10 };
 
-		sort(numeros);
+		sort(numbers, numbers.length);
 
-		for (int x : numeros) {
-			System.out.print(x + " ");
+		for (int x : numbers)
+			System.out.print(x + ", ");
+	}
+
+	private static void sort(int[] array, int size) {
+		int elements = 1;
+		int start, middle, end;
+
+		while (elements < size) {
+			start = 0;
+			while (start + elements < size) {
+				middle = start + elements;
+				end = start + 2 * elements;
+
+				if (end > size)
+					end = size;
+				merge(array, start, middle, end);
+				start = end;
+			}
+			elements *= 2;
 		}
 	}
 
-	public static int[] sort(int[] array) {
-		if (array.length <= 1)
-			return array;
-		int[] left = new int[array.length/2];
-		int[] right = new int[array.length/2];
+	private static void merge(int[] array, int start, int middle, int end) {
+		int temp[] = new int[end - start];
+		int i = start;
+		int m = middle;
+		int pos = 0;
 
-		for (int i=0; i<array.length; i++) {
-			if (i < array.length/2)
-				left[i] = array[i];
+		while (i < middle && m < end) {
+			if (array[i] <= array[m])
+				temp[pos++] = array[i++];
 			else
-				right[i] = array[i];
+				temp[pos++] = array[m++];
 		}
-		left = sort(left);
-		right = sort(right);
-		return merge(left, right);
-	}
 
-	public static int[] merge(int[] left, int[] right) {
-		int[] merged = new int[left.length];
-		int index  = 0;
-
-		while (left.length > 0 && right.length > 0) {
-			if (left[0] <= right[0]) {
-				merged[index] = left[0];
-				remove(left, 0);
-			} else {
-				merged[index] = right[0];
-				remove(right, 0);
-			}
-			index++;
-		}
-		return merged;
-	}
-
-	public static int remove(int[] array, int pos) {
-		int[] temp = new int[array.length - 1];
-		int removed = null;
-
-		for (int i = 0, j = 0; i < array.length; i++) {
-			if (i == pos) {
-				removed = array[i];
-				continue;
-			} else if (array[i] != null) {
-				temp[j] = array[i];
-				j++;
-			}
-		}
-		array = temp;
-		return removed;
+		while (i < middle)
+			temp[pos++] = array[i++];
+		while (m < end)
+			temp[pos++] = array[m++];
+		for (pos = 0, i = start; i < end; i++, pos++)
+			array[i] = temp[pos];
 	}
 }
